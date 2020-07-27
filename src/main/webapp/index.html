@@ -96,15 +96,14 @@
 									                                response.weather[0].icon + '@2x.png\">' + '<h4>' + parseInt(celcius) + ' °C</h4>' +
 									                                '<table class="table"> \
 									                                                <tbody>' +
-									                                '<tr> <td> Minimum : </td> <td>' + parseInt(celciusmin) + ' °C</td>' +
-									                                '<td> Maximum : </td> <td>' + parseInt(celciusmax) + ' °C</td>' +
-									                                '</tr> <tr> <td> Pressure : </td> <td>' + response.main.pressure + ' hpa </td>' +
-									                                '<td> Humidity : </td> <td>' + response.main.humidity + ' % </td> </tr>' +
-									                                '<tr> <td> Sunrise : </td> <td>' + timeSunrise + ' hrs</td>' +
-									                                '<td> Sunset : </td> <td>' + timeSunset + ' hrs</td>' +
-									                                '<tr> <td> Weather Description : </td> <td>' + response.weather[0].description + '</td>' +
-									                                '<td></td> <td></td> </tr>' +
-									                                '<tr> <td> Time Zone : </td> <td>' + timezone + '</td> <td></td> <td></td></tr>' +
+									                                '<tr> <td> Minimum: ' + parseInt(celciusmin) + ' °C</td>' +
+									                                '<td> Maximum: ' + parseInt(celciusmax) + ' °C</td>' +
+									                                '</tr> <tr> <td> Pressure: ' + response.main.pressure + ' hpa </td>' +
+									                                '<td> Humidity: ' + response.main.humidity + '% </td> </tr>' +
+									                                '<tr> <td> Sunrise: ' + timeSunrise + ' hrs</td>' +
+									                                '<td> Sunset: ' + timeSunset + ' hrs</td>' +
+									                                '<tr> <td> Weather Description: ' + response.weather[0].description + '</td>' +
+									                                '<td>  Time Zone : ' + timezone + '</td>  </tr>' +
 									                                '</tbody> </table> </div>'
 									                            );
 
@@ -122,68 +121,88 @@
 					});
 </script>
 
+<script type="text/javascript">
+function clearAll() {
+	  document.getElementById("getCity").value="";
+	  document.getElementById("lat").value="";
+	  document.getElementById("lon").value="";
+}
+</script>
+
+
 <head>
-<title>The Weather Application - Tekton Deploy</title>
+<title>The Weather Application</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table, th, td {
+	border: 1px solid black;
+}
+</style>
 </head>
 
 <body>
 
-	<div class="jumbotron text-center">
+	<div class="jumbotron text-center" height="100" >
 		<h1>Weather Application</h1>
-		<p>Built with Codewind!!!</p>
+		<p>Powered by Accelerator for teams</p>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-4"></div>
-		<div class="col-sm-4">
+		<div class="col-sm-5">
 			<div class="panel panel-default">
-				<div class="panel-heading" align="center">City Name / Latitude and Longitude
-                </div>
-                <div class="panel-body">
+				<div class="panel-heading" align="center">City Name / Latitude
+					and Longitude</div>
+				<div class="panel-body">
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="Enter City Name" name="getCity" id="getCity" />
-                            </div>
-                        </div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-12">
+								<input type="text" class="form-control"
+									placeholder="Enter City Name" name="getCity" id="getCity" />
+							</div>
+						</div>
 
-                        <div align="center" class="center"><b>OR</b></div>
+						<div align="center" class="center">
+							<b>OR</b>
+						</div>
 
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" placeholder="Enter Latitude" name="lat" id="lat" />
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" placeholder="Enter Longitude" name="lon" id="lon" />
-                            </div>
-                        </div>
-                        <div>&nbsp;</div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <button class="btn btn-success btn-block" type="submit" id="btnSubmit" align="center">Submit</button>
-                            </div>
-                            <div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-6">
+								<input type="text" class="form-control"
+									placeholder="Enter Latitude" name="lat" id="lat" />
+							</div>
+							<div class="col-sm-6">
+								<input type="text" class="form-control"
+									placeholder="Enter Longitude" name="lon" id="lon" />
+							</div>
+						</div>
+						<div>&nbsp;</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<button class="btn btn-success btn-block" onclick="clearAll()"
+									id="btnClear" align="center">Clear</button>
+							</div>
+							<div class="col-sm-6">
+								<button class="btn btn-success btn-block" type="submit"
+									id="btnSubmit" align="center">Submit</button>
+							</div>
 
-                                <button class="btn btn-basic btn-block" id="btnGetLocation" align="center"> <i class="fa fa-location-arrow"></i> Detect Location</button>
-                            </div>
-                        </div>
-                    </div>
+						</div>
+					</div>
+				</div>
 
-                </div>
 			</div>
 		</div>
-		<div class="col-sm-4"></div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-4"></div>
-		<div class="col-sm-4">
+		<div class="col-sm-5">
 			<div id="resultDiv"></div>
 		</div>
-		<div class="col-sm-4"></div>
+		<div class="col-sm-5"></div>
 	</div>
 
 </body>
